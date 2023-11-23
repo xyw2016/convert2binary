@@ -20,7 +20,7 @@ void Events::ReadandWrite(){
   std::string filename = Parameter::PATHOUT  + "evolution_all_xyeta_kompost.dat";   
   std::cout<<" "<<filename<<std::endl; 
 
-  for(int tid = 0; tid< NT-1; tid++ )
+  for(int tid = 0; tid< NT; tid++ )
   {
     
     std::string out_open_mode;
@@ -51,7 +51,7 @@ void Events::ReadandWrite(){
 
      if (tid == 0) {
         float header[] = {
-            static_cast<float>(0), static_cast<float>(DT),
+            static_cast<float>(TAU0), static_cast<float>(DT),
             static_cast<float>(output_nx), static_cast<float>(output_dx),
             static_cast<float>(output_xmin),
             static_cast<float>(output_ny), static_cast<float>(output_dy),
