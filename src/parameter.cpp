@@ -21,7 +21,8 @@ double TAU1 = 0.4;
 double NT   = 10;
 
 int EOS_ID = 14;
-int turn_on_rhob  = 1;
+double Normfactor = Normfactor;
+int turn_on_rhob  = 0;
 int turn_on_shear = 0;
 int turn_on_bulk  = 0;
 int turn_on_diff  = 0;
@@ -44,6 +45,7 @@ void Setup(INIReader &reader) {
   TAU0 = reader.GetReal("Input", "TAU0", TAU0);
   TAU1 = reader.GetReal("Input", "TAU1", TAU1);
   NT = reader.GetReal("Input", "NT", NT);
+  Normfactor = reader.GetReal("Input", "Normfactor", Normfactor);
   
   EOS_ID   = reader.GetInteger("Input", "EOS_ID", EOS_ID);
   turn_on_rhob   = reader.GetInteger("Input", "turn_on_rhob", turn_on_rhob);

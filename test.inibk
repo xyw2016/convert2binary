@@ -1,6 +1,6 @@
 [Input]               ; input
-PATHIN=/home/xywu/scratch/results/collect/30_40_fit_check/KOMPOST_RESULTS/kompost_results_34
-PATHOUT=/home/xywu/scratch/results/collect/30_40_fit_check/KOMPOST_RESULTS/kompost_results_34
+PATHIN=inputpath
+PATHOUT=outputpath
 
 NX= 512                 ; NX
 NY= 512                 ; NY
@@ -8,7 +8,7 @@ NZ= 1                 ; NZ
 
 DX=  0.0664062 
 DY=  0.0664062
-DZ=  0.0664062
+DZ=  0.1
 
 
 

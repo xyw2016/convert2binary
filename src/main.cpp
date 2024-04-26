@@ -24,18 +24,14 @@ int main(int argc, char **argv) {
     exit(EXIT_FAILURE);
   }
 
-  std::cout<< "Config loaded from 'test.ini': NX="
-              << reader.GetInteger("input", "NX", -1) << ", name="
-              << reader.GetInteger("input", "NY", -1) << ", name="
-              << reader.GetInteger("input", "NZ", -1) << ", name=";
-              
   Parameter::Setup(reader);
 
-  std::cout<< Parameter::NX<<std::endl;
   
   int eos_type = Parameter::EOS_ID;
   Events event(eos_type);
+  std::cout <<"1" <<std::endl;
   event.ReadandWrite();
+  std::cout <<"2" <<std::endl;
 
 
 }

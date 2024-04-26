@@ -1,7 +1,6 @@
 // Copyright 2018 @ Chun Shen
 
 #include "eos_hotQCD.h"
-#include "util.h"
 #include "parameter.h"
 #include <sstream>
 #include <fstream>
@@ -18,7 +17,6 @@ EOS_hotQCD::EOS_hotQCD(const int eos_id_in) : eos_id(eos_id_in) {
     set_flag_muS(false);
     set_flag_muC(false);
 }
-
 
 void EOS_hotQCD::initialize_eos() {
     // read the lattice EOS pressure, temperature, and 
@@ -50,7 +48,7 @@ void EOS_hotQCD::initialize_eos() {
         }
 
         if (!eos_file) {
-            //music_message.error("Can not find the EoS file.");
+            std::cout<< "Can not find the EoS file."<<" "<<path<<std::endl;
             exit(1);
         }
 

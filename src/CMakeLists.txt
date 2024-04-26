@@ -5,6 +5,7 @@ eos.cpp
 eos_base.cpp
 eos_neos.cpp
 eos_hotQCD.cpp
+eos_idealgas.cpp
 main.cpp
 parameter.cpp
 reader.cpp
@@ -13,6 +14,7 @@ ini.cpp
 endif()
 
 add_library(${libname} SHARED ${SOURCES})
+#add_library(${libname} ${SOURCES})
 set(CompileFlags "")
 if (APPLE)
     set(CompileFlags "${CompileFlags} -DAPPLE")

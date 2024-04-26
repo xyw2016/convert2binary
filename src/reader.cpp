@@ -16,8 +16,8 @@ Events::~Events(){
 void Events::ReadandWrite(){
   
   double DT = (TAU1-TAU0)/(NT);
-
-  std::string filename = Parameter::PATHOUT  + "evolution_all_xyeta_kompost.dat";   
+  double sfactor = Parameter::Normfactor;
+  std::string filename = Parameter::PATHOUT  + "/evolution_all_xyeta_kompost.dat";   
   std::cout<<" "<<filename<<std::endl; 
 
   for(int tid = 0; tid< NT; tid++ )
@@ -47,7 +47,11 @@ void Events::ReadandWrite(){
     const double output_dz     = DZ;
     const double output_xmin   = - (NX)*DX/2.;
     const double output_ymin   = - (NY)*DY/2.;
-    const double output_zmin   = - (NZ)*DZ/2.;
+    double output_zmin   = - (NZ)*DZ/2.;
+    if(NZ == 1) 
+    {
+        output_zmin=0.0;
+    }
 
      if (tid == 0) {
         float header[] = {
@@ -72,7 +76,8 @@ void Events::ReadandWrite(){
     double tau = TAU0  + (tid)*DT;
     
     std::stringstream fnameinput;
-    fnameinput<<Parameter::PATHIN<<"/kompost_EKT_"<<tid<<".music_init_flowNonLinear_pimunuTransverse_pimunuNS.txt";
+    //fnameinput<<Parameter::PATHIN<<"/kompost_EKT_"<<tid<<".music_init_flowNonLinear_pimunuTransverse.txt";
+    fnameinput<<Parameter::PATHIN<<"/ekt_tIn01_tOut08_"<<tid<<".music_init_flowNonLinear_pimunuTransverse.txt";
     
     std::ifstream profile(fnameinput.str());
     if(profile.is_open()){
@@ -116,16 +121,17 @@ void Events::ReadandWrite(){
                    >> pitautau >> pitaux >> pitauy >> pitaueta
                    >> pixx >> pixy >> pixeta >> piyy >> piyeta >> pietaeta;
                    ueta = ueta*tau;
+		   density = density*sfactor;
                    temp_profile_ed    [idx] = density; //GeV/fm^3
                    temp_profile_ux    [idx] = ux;
                    temp_profile_uy    [idx] = uy;
                    temp_profile_ueta  [idx] = ueta; //tau*ueta
                    temp_profile_utau  [idx] = sqrt(1. + ux*ux + uy*uy + ueta*ueta);
-                   temp_profile_pixx  [idx] = pixx;
-                   temp_profile_pixy  [idx] = pixy;
-                   temp_profile_pixeta[idx] = pixeta*tau; //fm^-4
-                   temp_profile_piyy  [idx] = piyy;
-                   temp_profile_piyeta[idx] = piyeta*tau;
+                   temp_profile_pixx  [idx] = pixx*sfactor;
+                   temp_profile_pixy  [idx] = pixy*sfactor;
+                   temp_profile_pixeta[idx] = pixeta*tau*sfactor; //fm^-4
+                   temp_profile_piyy  [idx] = piyy*sfactor;
+                   temp_profile_piyeta[idx] = piyeta*tau*sfactor;
                   
                    utau = temp_profile_utau[idx];
                   

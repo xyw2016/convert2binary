@@ -1,7 +1,7 @@
 // Copyright 2018 @ Chun Shen
 
 #include "eos.h"
-//#include "eos_idealgas.h"
+#include "eos_idealgas.h"
 //#include "eos_EOSQ.h"
 //#include "eos_s95p.h"
 //#include "eos_WB.h"
@@ -14,7 +14,7 @@
 
 EOS::EOS(const int eos_id_in) : eos_id(eos_id_in)  {
     if (eos_id == 0) {
-    //    eos_ptr = std::unique_ptr<EOS_idealgas> (new EOS_idealgas ());
+        eos_ptr = std::unique_ptr<EOS_idealgas> (new EOS_idealgas ());
     } else if (eos_id == 1) {
     //    eos_ptr = std::unique_ptr<EOS_eosQ> (new EOS_eosQ ());
     } else if (eos_id >= 2 && eos_id <= 7) {

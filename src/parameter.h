@@ -37,6 +37,8 @@ extern double DZ;
 extern double TAU0;
 extern double TAU1;
 extern double NT;
+extern double Normfactor;
+
 
 extern int EOS_ID;
 
